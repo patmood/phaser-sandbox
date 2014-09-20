@@ -14,18 +14,41 @@
     <button id="load-code">Load</button>
     <iframe id="preview"></iframe>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
     <script type="text/javascript">
-      $(document).ready(function() {
-        // Add script tag
-        $('#preview').contents().find('body').append('<script><\/script>')
-        var scriptTag = $('#preview').contents().find('script')
-        $('#load-code').on('click', function(){
 
-          var jsCode = $('#code textarea').val()
-          scriptTag.html(jsCode)
-        })
+      var Sandbox = {
+        init: function() {
+          Sandbox.template = _.template($('#template').html())
+          Sandbox.destination = $('#preview')[0]
+          Sandbox.render()
+        }
+      , render: function() {
+          var data = $('#code textarea').val()
+          Sandbox.destination.srcdoc = Sandbox.template({data: data})
+        }
+      }
+
+      $(document).ready(function() {
+        Sandbox.init()
+        $('#load-code').on('click', Sandbox.render)
       })
 
+    </script>
+
+    <script type="text/template" id="template">
+      <!doctype html>
+      <html>
+        <body>
+          <p>iframe</p>
+          <script type="text/javascript">
+            window.onload = function() {
+              <%= data %>
+            }
+          <%= "<"+"/script>" %>
+          <p>after</p>
+        </body>
+      </html>
     </script>
   </body>
 </html>
