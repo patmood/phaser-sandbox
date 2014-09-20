@@ -7,6 +7,7 @@
       iframe {
         width: 100%;
         height: 100%;
+        border: none;
       }
       h1 {
         font-family: sans-serif;
@@ -30,6 +31,9 @@
         overflow-y: hidden;
         overflow-x: auto;
       }
+      .CodeMirror pre {
+        line-height: 1.2em;
+      }
 
     </style>
   </head>
@@ -51,16 +55,16 @@
     <script src="lib/addons/closebrackets.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
     <script type="text/javascript">
-
+      var myCodeMirror = CodeMirror
       var Sandbox = {
         init: function() {
           Sandbox.template = _.template($('#template').html())
           Sandbox.destination = $('#preview iframe')[0]
           Sandbox.render()
         },
-        render: function() {
+        render: function(code) {
           var data = {
-            code: $('#code textarea').val(),
+            code: code,
             phaser: 'https://cdn.rawgit.com/photonstorm/phaser/2.1.0/build/phaser.js'
           }
           Sandbox.destination.srcdoc = Sandbox.template(data)
@@ -69,12 +73,16 @@
 
       $(document).ready(function() {
         Sandbox.init()
-        $('#load-code').on('click', Sandbox.render)
+        $('#load-code').on('click', function() {
+          var code = myCodeMirror.getValue()
+          Sandbox.render(code)
+        })
         var myTextArea = document.getElementById('code-box')
-          , myCodeMirror = CodeMirror.fromTextArea(myTextArea, {
+
+        myCodeMirror = CodeMirror.fromTextArea(myTextArea, {
           lineNumbers: true,
           value: "function myScript(){return 100;}\n",
-          mode:  "javascript",
+          mode:  "text/javascript",
           tabSize: 2,
           lineWrapping: true,
           matchBrackets: true,
@@ -90,14 +98,12 @@
       <!doctype html>
       <html>
         <body>
-          <p>iframe</p>
           <script type="text/javascript" src=<%= phaser %>><%= '<'+'/script>' %>
           <script type="text/javascript">
             window.onload = function() {
               <%= code %>
             }
           <%= '<'+'/script>' %>
-          <p>after</p>
         </body>
       </html>
     </script>
