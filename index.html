@@ -24,8 +24,11 @@
           Sandbox.render()
         }
       , render: function() {
-          var data = $('#code textarea').val()
-          Sandbox.destination.srcdoc = Sandbox.template({data: data})
+          var data = {
+            code: $('#code textarea').val()
+          , phaser: 'https://cdn.rawgit.com/photonstorm/phaser/2.1.0/build/phaser.js'
+          }
+          Sandbox.destination.srcdoc = Sandbox.template(data)
         }
       }
 
@@ -41,11 +44,12 @@
       <html>
         <body>
           <p>iframe</p>
+          <script type="text/javascript" src=<%= phaser %>><%= '<'+'/script>' %>
           <script type="text/javascript">
             window.onload = function() {
-              <%= data %>
+              <%= code %>
             }
-          <%= "<"+"/script>" %>
+          <%= '<'+'/script>' %>
           <p>after</p>
         </body>
       </html>
