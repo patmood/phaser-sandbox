@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+
+    </style>
+  </head>
+  <body>
+    <h1>Fiddle Sticks</h1>
+    <p>wat</p>
+    <div id="code">
+      <textarea></textarea>
+    </div>
+    <button id="load-code">Load</button>
+    <iframe id="preview"></iframe>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        // Add script tag
+        $('#preview').contents().find('body').append('<script><\/script>')
+        var scriptTag = $('#preview').contents().find('script')
+        $('#load-code').on('click', function(){
+
+          var jsCode = $('#code textarea').val()
+          scriptTag.html(jsCode)
+        })
+      })
+
+    </script>
+  </body>
+</html>
