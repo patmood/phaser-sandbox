@@ -55,6 +55,18 @@
     <script src="lib/addons/closebrackets.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
     <script type="text/javascript">
+      var defaultCode = [
+       "var game = new Phaser.Game(800, 600, Phaser.CANVAS, '', { preload: preload, create: create });",
+       "",
+       "function preload() {",
+       "  game.load.image('einstein', 'assets/pics/ra_einstein.png');",
+       "}",
+       "",
+       "function create() {",
+       "  game.add.sprite(0, 0, 'einstein');",
+       "}",
+       ""
+      ].join('\n')
       var myCodeMirror = CodeMirror
       var Sandbox = {
         init: function() {
@@ -81,7 +93,6 @@
 
         myCodeMirror = CodeMirror.fromTextArea(myTextArea, {
           lineNumbers: true,
-          value: "function myScript(){return 100;}\n",
           mode:  "text/javascript",
           tabSize: 2,
           lineWrapping: true,
@@ -90,6 +101,8 @@
           theme: 'pastel-on-dark',
           autofocus: true
         })
+
+        myCodeMirror.setValue(defaultCode)
       })
 
     </script>
@@ -97,6 +110,11 @@
     <script type="text/template" id="template">
       <!doctype html>
       <html>
+        <head>
+          <style>
+            * { margin: 0; padding: 0; }
+          </style>
+        </head>
         <body>
           <script type="text/javascript" src=<%= phaser %>><%= '<'+'/script>' %>
           <script type="text/javascript">
