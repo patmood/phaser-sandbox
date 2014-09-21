@@ -1,7 +1,7 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express')
+  , router = express.Router()
+  , Snippet = require('../models/snippet.js')
 
-/* GET home page. */
 router.get('/', function(req, res) {
   res.render('index', { title: 'Express' });
 });
