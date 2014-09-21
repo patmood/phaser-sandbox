@@ -2,7 +2,7 @@
 
 TL;DR jsfiddle for phaser
 
-### [TRY IT!](http://patmood.github.io/phaser-sandbox/)
+### [TRY IT!](http://phaser-sandbox.herokuapp.com/)
 
 This is an online sandbox/editor made for testing and sharing code snippets. It's designed specifically for phaser and can be used to demonstrate bugs with various versions.
 
