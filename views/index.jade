@@ -1,5 +1,31 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 Phaser Sandbox
+  #preview
+    iframe
+  #code
+    .controls
+      button#load-code Load
+    textarea#code-box
+
+block template
+  script(type="text/template", id="template").
+    <!doctype html>
+    <html>
+      <head>
+        <style>
+          * { margin: 0; padding: 0; }
+        </style>
+      </head>
+      <body>
+        <script type="text/javascript" src=<%= phaser %>><%= '<'+'/script>' %>
+        <script type="text/javascript">
+          window.onload = function() {
+            <%= code %>
+          }
+        <%= '<'+'/script>' %>
+      </body>
+    </html>
+
+

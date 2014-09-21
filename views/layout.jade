@@ -3,5 +3,17 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/lib/codemirror.css')
+    link(rel='stylesheet', href='/stylesheets/lib/pastel-on-dark.css')
   body
     block content
+    block template
+
+    script(src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js")
+    script(src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js")
+    script(src="javascripts/lib/codemirror.js")
+    script(src="javascripts/lib/mode/javascript/javascript.js")
+    script(src="javascripts/lib/addons/active-line.js")
+    script(src="javascripts/lib/addons/closebrackets.js")
+    script(src="javascripts/main.js")
+
