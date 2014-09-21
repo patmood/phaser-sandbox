@@ -14,7 +14,7 @@ I have included all assets available to the examples, but at this stage you will
 
 ## Contribute!
 
-Once the foundation is in place, pull requests are very welcome!
+If you find any bugs, please open a github issue or pull request with a fix :)
 
 ## TODO
 
