@@ -6,12 +6,14 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var db = require('./db')
+  , dotenv = require('dotenv')
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
 
+dotenv.load()
 db.setup()
 
 // view engine setup
