@@ -20,7 +20,7 @@
     render: function(code) {
       var data = {
         code: code,
-        phaser: 'https://cdn.rawgit.com/photonstorm/phaser/2.1.0/build/phaser.js'
+        phaser: '//cdn.rawgit.com/photonstorm/phaser/2.1.0/build/phaser.js'
       }
       Sandbox.destination.srcdoc = Sandbox.template(data)
     }
