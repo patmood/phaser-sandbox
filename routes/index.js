@@ -1,5 +1,6 @@
 var express = require('express')
   , router = express.Router()
+  , params = require('params')
   , Snippet = require('../models/snippet.js')
   , defaults = {
       code: [
@@ -19,7 +20,9 @@ router.get('/', function(req, res) {
 })
 
 router.post('/save', function(req, res) {
-  new Snippet(req.body).save(function(err, snippet) {
+  var snippet = params(req.body).only('code', 'phaserVersion')
+  snippet.code = encodeURI(snippet.code)
+  new Snippet(snippet).save(function(err, snippet) {
     if (err) throw err
     res.json(snippet._id)
   })
@@ -33,3 +36,4 @@ router.get('/:_id', function(req, res) {
 })
 
 module.exports = router;
+

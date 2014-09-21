@@ -17,6 +17,7 @@
     "jade": "~1.3.0",
     "mongoose": "^3.8.16",
     "morgan": "~1.0.0",
+    "params": "^0.1.0",
     "static-favicon": "~1.0.0"
   }
 }

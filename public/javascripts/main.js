@@ -56,7 +56,7 @@
       autofocus: true
     })
 
-    myCodeMirror.setValue(myTextArea.innerHTML)
+    myCodeMirror.setValue(decodeURI(myTextArea.innerHTML))
     getData(Sandbox.render)
   })
 
