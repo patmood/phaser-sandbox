@@ -7,7 +7,8 @@ block content
   #code
     .controls
       button#load-code Load
-    textarea#code-box
+      button#save-snippet Save
+    textarea#code-box= code
 
 block template
   script(type="text/template", id="template").
@@ -19,7 +20,7 @@ block template
         </style>
       </head>
       <body>
-        <script type="text/javascript" src=<%= phaser %>><%= '<'+'/script>' %>
+        <script type="text/javascript" src="//cdn.rawgit.com/photonstorm/phaser/<%= phaserVersion %>/build/phaser.js"><%= '<'+'/script>' %>
         <script type="text/javascript">
           window.onload = function() {
             <%= code %>

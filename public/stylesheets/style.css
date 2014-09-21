@@ -1,5 +1,4 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -23,7 +22,8 @@ h1 {
 }
 #code {
   width: 90%;
-  max-width: 800px;
+  max-width: 1100px;
+  min-width: 800px;
   margin: auto;
 }
 .CodeMirror {
