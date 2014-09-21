@@ -15,7 +15,7 @@
       url: '/save',
       data: data,
       success: function(res) {
-        console.log('success!', res)
+        window.location.replace(res)
       },
       error: function(err) {
         console.log(err)

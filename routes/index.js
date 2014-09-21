@@ -21,7 +21,7 @@ router.get('/', function(req, res) {
 router.post('/save', function(req, res) {
   new Snippet(req.body).save(function(err, snippet) {
     if (err) throw err
-    res.json(snippet)
+    res.json(snippet._id)
   })
 })
 
